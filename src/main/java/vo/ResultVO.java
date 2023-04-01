@@ -15,6 +15,8 @@ public class ResultVO {
     private String registration_number; // 등록증 번호
     private String represent_name; // 대표자 성명
 
+    private long epoch; // for sort
+
     public String getCompany_name() {
         return company_name;
     }
@@ -87,6 +89,10 @@ public class ResultVO {
         this.represent_name = represent_name;
     }
 
+    public long getEpoch() { return epoch; }
+
+    public void setEpoch(long epoch) { this.epoch = epoch; }
+
     @Override public String toString() {
         return "ResultVO{" +
             "company_name='" + company_name + '\'' +
@@ -98,6 +104,7 @@ public class ResultVO {
             ", expiration_date='" + expiration_date + '\'' +
             ", registration_number='" + registration_number + '\'' +
             ", represent_name='" + represent_name + '\'' +
+            ", epoch='" + epoch + '\'' +
             '}';
     }
 }

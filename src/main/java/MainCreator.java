@@ -5,10 +5,26 @@ import vo.ResultVO;
 public class MainCreator {
     public static void main(String[] args) {
 
-        ExcelReader reader = new ExcelReader();
+        try {
+            ExcelReader reader = new ExcelReader();
 
-        List<ResultVO> resultList = reader.readXls("C:\\Users\\LEE_SANGIL03\\Downloads\\20230328_lenders1.xls");
+            List<ResultVO> resultList = reader.readXls("C:\\Users\\user\\Documents\\test\\new.xls");
 
-        resultList.forEach((result) -> { System.out.println("result >>> " + result); } );
+            resultList.sort((a, b) -> {
+                if(a.getEpoch() > b.getEpoch()) {
+                    return -1;
+                } else if (a.getEpoch() < b.getEpoch()) {
+                    return 1;
+                }
+
+                return 0;
+            });
+
+            //resultList.forEach((result) -> { System.out.println("result >>> " + result); } );
+            reader.xlsWriter(resultList);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
